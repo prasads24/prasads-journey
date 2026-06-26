@@ -529,11 +529,30 @@ export default function App() {
               </div>
             </section>
 
-            {/* Comparison specs section: 2D desktop vs Spatial IT solutions */}
-            
-
             {/* Quick interactive stats slider / skill card */}
-            
+            <section className="bg-white/5 border border-white/10 rounded-3xl p-8 space-y-6 text-center">
+              <h2 className="text-xl font-bold text-white tracking-tight">
+                Ready to deploy your next spatial initiative?
+              </h2>
+              <p className="text-xs text-white/60 max-w-md mx-auto leading-relaxed">
+                Connect with Prasad Sawant via email, check out GitHub code repositories, or audit full system capabilities back in Spatial Desktop OS mode.
+              </p>
+              <div className="flex justify-center gap-3 pt-2">
+                <a 
+                  href={`mailto:${personalBio.socials.email}`}
+                  className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 rounded-xl text-xs font-semibold tracking-wide transition-all hover:translate-y-[-1px] inline-flex items-center gap-1.5 shadow-lg"
+                >
+                  Initiate Secure Link <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+                <button
+                  onClick={() => { playClickSound(); setIsWorkspaceMode(true); }}
+                  className="px-5 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-semibold tracking-wide transition-all text-white/90"
+                >
+                  Return to Spatial OS
+                </button>
+              </div>
+            </section>
+
           </div>
         </main>
       )}
