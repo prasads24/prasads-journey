@@ -5,7 +5,7 @@ export const personalBio = {
   title: "System Engineer & Support Specialist",
   location: "Navi Mumbai, India",
   tagline: "4.3+ years of expert production support for the core banking system (TCS BaNCS) at State Bank of India (SBI). Dedicated to maintaining 99.9%+ service SLAs, executing platform migrations, and script-automating high-availability workloads.",
-  avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=256&h=256", // High-quality professional avatar portrait
+  avatar: "/avatar.jpg", // Real profile photo
   socials: {
     github: "https://github.com/prasadsawant323",
     linkedin: "https://linkedin.com/in/prasadsawant",
