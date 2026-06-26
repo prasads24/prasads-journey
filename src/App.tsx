@@ -530,75 +530,10 @@ export default function App() {
             </section>
 
             {/* Comparison specs section: 2D desktop vs Spatial IT solutions */}
-            <section className="space-y-6">
-              <div className="text-center space-y-2">
-                <h3 className="text-[10px] font-mono text-indigo-400 uppercase tracking-widest block font-bold">
-                  SPECIFICATION ARCHITECTURE
-                </h3>
-                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
-                  Why Spatial Architectures?
-                </h2>
-              </div>
-
-              <div className="bg-black/50 border border-white/10 rounded-3xl overflow-hidden font-sans">
-                <table className="w-full text-left border-collapse text-xs">
-                  <thead>
-                    <tr className="bg-white/5 border-b border-white/10 text-white/40 uppercase tracking-wider text-[10px] font-mono">
-                      <th className="p-4 sm:p-5">System Attribute</th>
-                      <th className="p-4 sm:p-5">Legacy IT Style (2D)</th>
-                      <th className="p-4 sm:p-5 text-blue-400 font-bold">Spatial Engineering (3D)</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-white/5 text-white/80">
-                    <tr>
-                      <td className="p-4 sm:p-5 font-medium">Platform Scaling</td>
-                      <td className="p-4 sm:p-5 text-white/50">Manual VM deployments, slow load gates.</td>
-                      <td className="p-4 sm:p-5 text-blue-300 font-medium">Elastic Kubernetes, multi-region autoscaling.</td>
-                    </tr>
-                    <tr>
-                      <td className="p-4 sm:p-5 font-medium">API Latency SLA</td>
-                      <td className="p-4 sm:p-5 text-white/50">Restricted monolithic queries (500ms+ roundtrip).</td>
-                      <td className="p-4 sm:p-5 text-blue-300 font-medium">Sub-50ms caching with Redis & gRPC streams.</td>
-                    </tr>
-                    <tr>
-                      <td className="p-4 sm:p-5 font-medium">UI Performance</td>
-                      <td className="p-4 sm:p-5 text-white/50">Heavy server rendering, bulky bundles.</td>
-                      <td className="p-4 sm:p-5 text-blue-300 font-medium">Atomic responsive React SPAs, glass shaders.</td>
-                    </tr>
-                    <tr>
-                      <td className="p-4 sm:p-5 font-medium">Deployment Guardrails</td>
-                      <td className="p-4 sm:p-5 text-white/50">Manual SSH setups, unpredictable updates.</td>
-                      <td className="p-4 sm:p-5 text-blue-300 font-medium">Declarative IaC with Terraform, automated CI/CD.</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </section>
+            
 
             {/* Quick interactive stats slider / skill card */}
-            <section className="bg-white/5 border border-white/10 rounded-3xl p-8 space-y-6 text-center">
-              <h2 className="text-xl font-bold text-white tracking-tight">
-                Ready to deploy your next spatial initiative?
-              </h2>
-              <p className="text-xs text-white/60 max-w-md mx-auto leading-relaxed">
-                Connect with Prasad Sawant via email, check out GitHub code repositories, or audit full system capabilities back in Spatial Desktop OS mode.
-              </p>
-              <div className="flex justify-center gap-3 pt-2">
-                <a 
-                  href={`mailto:${personalBio.socials.email}`}
-                  className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 rounded-xl text-xs font-semibold tracking-wide transition-all hover:translate-y-[-1px] inline-flex items-center gap-1.5 shadow-lg"
-                >
-                  Initiate Secure Link <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-                <button
-                  onClick={() => { playClickSound(); setIsWorkspaceMode(true); }}
-                  className="px-5 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-semibold tracking-wide transition-all text-white/90"
-                >
-                  Return to Spatial OS
-                </button>
-              </div>
-            </section>
-
+            
           </div>
         </main>
       )}
