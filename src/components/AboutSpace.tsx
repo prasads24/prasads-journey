@@ -1,6 +1,6 @@
 import React from 'react';
 import { personalBio } from '../data/careerData';
-import { Github, Linkedin, Twitter, Mail, Award, Cpu, Flame, CheckCircle, MapPin, Sparkles } from 'lucide-react';
+import { Github, Linkedin, Instagram, Mail, Award, Cpu, Flame, CheckCircle, MapPin, Sparkles } from 'lucide-react';
 
 export default function AboutSpace() {
   return (
@@ -117,13 +117,13 @@ export default function AboutSpace() {
           </a>
 
           <a 
-            href={personalBio.socials.twitter} 
+            href={personalBio.socials.instagram} 
             target="_blank" 
             rel="noreferrer"
             className="flex items-center gap-2.5 px-4 py-3 bg-white/5 hover:bg-white/10 border border-white/5 rounded-xl text-xs font-medium text-white/80 hover:text-white transition-all hover:translate-y-[-2px]"
           >
-            <Twitter className="w-4 h-4 text-sky-400" />
-            <span>Twitter</span>
+            <Instagram className="w-4 h-4 text-pink-400" />
+            <span>Instagram</span>
           </a>
 
           <a 
