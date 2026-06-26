@@ -43,6 +43,17 @@ export default function App() {
   const [isPlayingAmbient, setIsPlayingAmbient] = useState(false);
   const [currentTime, setCurrentTime] = useState('');
   const [hoveredDockItem, setHoveredDockItem] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect narrow/mobile viewports so the desktop-style floating windows
+  // can switch to a single, full-width stacked layout instead of being
+  // clipped by their fixed pixel positions.
+  useEffect(() => {
+    const checkViewport = () => setIsMobile(window.innerWidth < 768);
+    checkViewport();
+    window.addEventListener('resize', checkViewport);
+    return () => window.removeEventListener('resize', checkViewport);
+  }, []);
 
   // Active Windows State
   const [windows, setWindows] = useState<SpatialWindow[]>([
@@ -98,6 +109,13 @@ export default function App() {
       }
       return win;
     }));
+  };
+
+  // Mobile dock selection: always switch to & open the section, never close it
+  // (there's no "empty canvas" concept on the single-column mobile layout).
+  const selectMobileWindow = (id: string) => {
+    setWindows(prev => prev.map(w => w.id === id ? { ...w, isOpen: true, isMinimized: false } : w));
+    focusWindow(id);
   };
 
   // Toggle Window State (Open / Focus / Minimize)
@@ -187,13 +205,13 @@ export default function App() {
       )}
 
       {/* Global VisionOS Floating Header Status Bar */}
-      <header className="fixed top-4 inset-x-0 mx-auto w-full max-w-5xl px-6 py-2.5 bg-black/20 backdrop-blur-2xl border border-white/10 rounded-full flex items-center justify-between z-50 shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
+      <header className="fixed top-4 inset-x-0 mx-auto w-[94%] sm:w-full max-w-5xl px-3 sm:px-6 py-2.5 bg-black/20 backdrop-blur-2xl border border-white/10 rounded-full flex items-center justify-between z-50 shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
         {/* Title Brand logo */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 shrink-0">
           <div className="w-6 h-6 rounded-full bg-white/10 border border-white/15 flex items-center justify-center text-white shrink-0 shadow-inner">
             
           </div>
-          <span className="text-xs font-bold tracking-wider font-sans uppercase text-white/90">
+          <span className="text-xs font-bold tracking-wider font-sans uppercase text-white/90 hidden sm:inline">
             Spatial IT Core
           </span>
         </div>
@@ -202,23 +220,25 @@ export default function App() {
         <div className="flex items-center gap-1.5 p-1 bg-white/5 border border-white/5 rounded-full">
           <button
             onClick={() => { playClickSound(); setIsWorkspaceMode(true); }}
-            className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all ${
+            className={`px-3 sm:px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all whitespace-nowrap ${
               isWorkspaceMode 
                 ? 'bg-white/10 text-white shadow-[0_2px_8px_rgba(255,255,255,0.08)] border border-white/10' 
                 : 'text-white/40 hover:text-white/70'
             }`}
           >
-            Spatial Desktop OS
+            <span className="hidden sm:inline">Spatial Desktop OS</span>
+            <span className="sm:hidden">Desktop</span>
           </button>
           <button
             onClick={() => { playClickSound(); setIsWorkspaceMode(false); }}
-            className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all ${
+            className={`px-3 sm:px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all whitespace-nowrap ${
               !isWorkspaceMode 
                 ? 'bg-white/10 text-white shadow-[0_2px_8px_rgba(255,255,255,0.08)] border border-white/10' 
                 : 'text-white/40 hover:text-white/70'
             }`}
           >
-            Immersive Story Scroll
+            <span className="hidden sm:inline">Immersive Story Scroll</span>
+            <span className="sm:hidden">Scroll</span>
           </button>
         </div>
 
@@ -227,7 +247,7 @@ export default function App() {
           {/* Eye gaze toggle widget */}
           <button
             onClick={() => { playClickSound(); setShowGazeCircle(!showGazeCircle); }}
-            className={`p-1.5 rounded-lg border transition-all ${
+            className={`p-1.5 rounded-lg border transition-all hidden sm:inline-flex ${
               showGazeCircle 
                 ? 'bg-blue-500/10 border-blue-500/20 text-blue-400' 
                 : 'bg-white/5 border-white/5 text-white/30 hover:text-white'
@@ -237,17 +257,17 @@ export default function App() {
             {showGazeCircle ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
           </button>
 
-          <div className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1 rounded-full border border-white/5">
+          <div className="hidden md:flex items-center gap-1.5 bg-white/5 px-2.5 py-1 rounded-full border border-white/5">
             <Wifi className="w-3.5 h-3.5 text-blue-400" />
             <span className="font-mono text-[10px]">980 Mb/s</span>
           </div>
 
-          <div className="flex items-center gap-1">
+          <div className="hidden sm:flex items-center gap-1">
             <BatteryCharging className="w-4 h-4 text-emerald-400" />
             <span className="font-mono text-[10px]">100%</span>
           </div>
 
-          <div className="flex items-center gap-1.5 font-mono text-[11px] text-white/80 border-l border-white/10 pl-3">
+          <div className="flex items-center gap-1.5 font-mono text-[11px] text-white/80 border-l border-white/10 pl-3 shrink-0">
             <Clock className="w-3.5 h-3.5 opacity-60" />
             <span>{currentTime || '07:27 AM'}</span>
           </div>
@@ -281,7 +301,7 @@ export default function App() {
                   )}
 
                   <button
-                    onClick={() => { playClickSound(); toggleWindow(item.id); }}
+                    onClick={() => { playClickSound(); isMobile ? selectMobileWindow(item.id) : toggleWindow(item.id); }}
                     className={`relative w-12 h-12 rounded-full flex items-center justify-center border transition-all duration-200 active:scale-90 ${
                       isFocused 
                         ? 'bg-white/20 border-white/30 text-white scale-105 shadow-lg shadow-blue-500/10' 
@@ -306,19 +326,27 @@ export default function App() {
 
           {/* Canvas Containing Floating Modular Glass Windows */}
           <div 
-            className="relative w-full h-[85vh] max-w-7xl mx-auto rounded-3xl overflow-hidden pointer-events-none"
+            className={isMobile 
+              ? "relative w-full px-4 pb-16" 
+              : "relative w-full h-[85vh] max-w-7xl mx-auto rounded-3xl overflow-hidden pointer-events-none"
+            }
             id="workspace-canvas"
           >
             {/* Subtle Helper notice for desk workspace */}
-            <div className="absolute inset-x-0 bottom-6 mx-auto text-center pointer-events-none opacity-45">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-white/70">
-                 Vision Pro Workspace Platform • Use grab bars to stack windows
-              </span>
-            </div>
+            {!isMobile && (
+              <div className="absolute inset-x-0 bottom-6 mx-auto text-center pointer-events-none opacity-45">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-white/70">
+                   Vision Pro Workspace Platform • Use grab bars to stack windows
+                </span>
+              </div>
+            )}
 
             {/* Render Windows */}
             {windows.map((win) => {
               if (!win.isOpen || win.isMinimized) return null;
+              // On mobile, show only the active section full-width and stacked,
+              // instead of all open windows at their fixed desktop x/y/width.
+              if (isMobile && win.id !== activeWindowId) return null;
 
               return (
                 <div key={win.id} className="pointer-events-auto">
@@ -331,6 +359,7 @@ export default function App() {
                     height={win.height}
                     zIndex={win.zIndex}
                     isActive={activeWindowId === win.id}
+                    isMobile={isMobile}
                     onClose={() => closeWindow(win.id)}
                     onMinimize={() => minimizeWindow(win.id)}
                     onFocus={() => focusWindow(win.id)}

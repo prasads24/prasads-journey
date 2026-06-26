@@ -7,14 +7,14 @@ export const personalBio = {
   tagline: "4.3+ years of expert production support for the core banking system (TCS BaNCS) at State Bank of India (SBI). Dedicated to maintaining 99.9%+ service SLAs, executing platform migrations, and script-automating high-availability workloads.",
   avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=256&h=256", // High-quality professional avatar portrait
   socials: {
-    github: "https://github.com/prasadsawant323",
-    linkedin: "https://linkedin.com/in/prasadsawant",
-    twitter: "https://twitter.com/prasadsawant",
+    github: "https://github.com/prasads24",
+    linkedin: "https://www.linkedin.com/in/prasadsawant24",
+    instagram: "https://www.instagram.com/_prasads_",
     email: "prasadsawant323@gmail.com"
   },
   stats: {
     experienceYears: "4.7 Yrs",
-    projectsCompleted: "10+",
+    projectsCompleted: "1",
     cloudUptime: "99.9%+",
     linesOfCode: "15% Auto"
   }
