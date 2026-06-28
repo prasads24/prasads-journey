@@ -56,10 +56,10 @@ export default function App() {
 
   // Active Windows State
   const [windows, setWindows] = useState<SpatialWindow[]>([
-    { id: 'about', title: 'About Me - Vitals', x: 60, y: 130, width: 440, height: 500, zIndex: 10, isOpen: true, isMinimized: false, type: 'about' },
-    { id: 'journey', title: 'IT Career Journey Timeline', x: 530, y: 100, width: 730, height: 560, zIndex: 5, isOpen: true, isMinimized: false, type: 'journey' },
-    { id: 'skills', title: 'Spatial Skill Matrix', x: 140, y: 220, width: 680, height: 460, zIndex: 1, isOpen: false, isMinimized: false, type: 'skills' },
-    { id: 'terminal', title: 'Secure System Core Shell', x: 400, y: 320, width: 560, height: 440, zIndex: 1, isOpen: false, isMinimized: false, type: 'terminal' }
+    { id: 'about', title: 'About Me - Vitals', x: 60, y: 20, width: 440, height: 500, zIndex: 10, isOpen: true, isMinimized: false, type: 'about' },
+    { id: 'journey', title: 'IT Career Journey Timeline', x: 530, y: 10, width: 730, height: 560, zIndex: 5, isOpen: true, isMinimized: false, type: 'journey' },
+    { id: 'skills', title: 'Spatial Skill Matrix', x: 140, y: 110, width: 680, height: 460, zIndex: 1, isOpen: false, isMinimized: false, type: 'skills' },
+    { id: 'terminal', title: 'Secure System Core Shell', x: 400, y: 210, width: 560, height: 440, zIndex: 1, isOpen: false, isMinimized: false, type: 'terminal' }
   ]);
   const [activeWindowId, setActiveWindowId] = useState<string>('about');
   const [maxZIndex, setMaxZIndex] = useState(10);
