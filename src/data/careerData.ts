@@ -39,8 +39,10 @@ export const milestones: CareerMilestone[] = [
       runtime: "TensorFlow, PyTorch",
       architecture: "Artificial Intelligence and Machine Learning Systems",
       database: "Oracle Database",
-      devops: "Cloud Platforms (VMware"
+      devops: "Cloud Platforms (VMware)"
     },
+    projectTitle: '',
+    projectDesc: ''
   },
 
   {

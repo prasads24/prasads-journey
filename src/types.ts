@@ -7,7 +7,7 @@ export interface CareerMilestone {
   description: string;
   achievements: string[];
   skills: string[];
-  category: 'frontend' | 'backend' | 'architecture' | 'devops';
+  category: 'frontend' | 'backend' | 'architecture' | 'ai';
   impactColor: string; // e.g. 'from-blue-500 to-cyan-500'
   specSheet: {
     language: string;
