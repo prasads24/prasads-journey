@@ -32,10 +32,10 @@ export const milestones: CareerMilestone[] = [
       "Enrolled in advanced AI and ML courses, gaining hands-on experience with neural networks, deep learning, and data analytics.",
     ],
     skills: ["AI/ML", "Deep Learning", "Python", "Cloud", "Research"],
-    category: "backend",
+    category: "ai",
     impactColor: "from-amber-500 via-orange-500 to-red-500",
     specSheet: {
-      language: "Python, Java",s
+      language: "Python, Java",
       runtime: "TensorFlow, PyTorch",
       architecture: "Artificial Intelligence and Machine Learning Systems",
       database: "Oracle Database",
