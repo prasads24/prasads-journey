@@ -97,6 +97,7 @@ export default function JourneySpace() {
         </div>
 
         {/* Core Project Panel */}
+        {activeMilestone.projectTitle && (
         <div className="bg-gradient-to-br from-zinc-950/80 to-zinc-900/60 border border-white/10 rounded-2xl p-5 space-y-3.5 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-3 opacity-15">
             <Terminal className="w-24 h-24 text-white" />
@@ -120,6 +121,7 @@ export default function JourneySpace() {
             </p>
           </div>
         </div>
+        )}
 
         {/* Specs Blueprint Section */}
         <div className="bg-black/40 border border-white/10 rounded-2xl p-4 font-mono text-[11px] space-y-3">
