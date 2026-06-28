@@ -2,9 +2,9 @@ import { CareerMilestone, SkillItem, TestimonialItem } from '../types';
 
 export const personalBio = {
   name: "Prasad Sawant",
-  title: "System Engineer & Support Specialist",
+  title: "System Engineer",
   location: "Navi Mumbai, India",
-  tagline: "4.3+ years of expert production support for the core banking system (TCS BaNCS) at State Bank of India (SBI). Dedicated to maintaining 99.9%+ service SLAs, executing platform migrations, and script-automating high-availability workloads.",
+  tagline: "4.5+ years of expert production support for the core banking system (TCS BaNCS) at State Bank of India (SBI). Dedicated to maintaining 99.9%+ service SLAs, executing platform migrations, and script-automating high-availability workloads.",
   avatar: "/avatar.jpg", // Real profile photo
   socials: {
     github: "https://github.com/prasads24",
@@ -21,6 +21,28 @@ export const personalBio = {
 };
 
 export const milestones: CareerMilestone[] = [
+  {
+    id: "milestone-4",
+    role: "Student",
+    company: "Amity University",
+    period: "Jab 2026 - Present",
+    location: "Navi Mumbai, India",
+    description: "Pursuing a Master of Computer Applications (MCA) degree with focus on Artificial Intelligence, Machine Learning. Engaging in advanced coursework and research to enhance technical expertise and problem-solving skills.",
+    achievements: [
+      "Enrolled in advanced AI and ML courses, gaining hands-on experience with neural networks, deep learning, and data analytics.",
+    ],
+    skills: ["AI/ML", "Deep Learning", "Python", "Cloud", "Research"],
+    category: "Artficial Intelligence",
+    impactColor: "from-amber-500 via-orange-500 to-red-500",
+    specSheet: {
+      language: "Python, Java",
+      runtime: "TensorFlow, PyTorch",
+      architecture: "Artificial Intelligence and Machine Learning Systems",
+      database: "Oracle Database",
+      devops: "Cloud Platforms (VMware"
+    },
+  },
+
   {
     id: "milestone-3",
     role: "System Engineer",
@@ -84,7 +106,6 @@ export const milestones: CareerMilestone[] = [
       "Graduated with a stellar academic distinction scoring 8.83 CGPI.",
       "Completed a specialized CDAC Diploma in Multilingual Computer Programming (Jan 2018).",
       "Acquired comprehensive theoretical and practical foundations in relational database schemas, query designs, and procedural architectures.",
-      "Obtained Microsoft Certified: Azure Fundamentals (AZ-900) certification (Jun 2024)."
     ],
     skills: ["Unix", "SQL", "C++", "Java", "Azure Fundamentals"],
     category: "frontend",
