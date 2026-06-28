@@ -50,7 +50,7 @@ export default function JourneySpace() {
                 </h4>
                 <p className="text-xs text-white/60 mb-2 font-medium">{m.company}</p>
 
-                <div className="flex items-center gap-1 text-[10px] text-white/40">
+                <div className="flex items-center gap-1 text-[10px] text-white/40 mt-2.5 pt-2 border-t border-white/5">
                   <MapPin className="w-3 h-3 text-red-400/70" />
                   <span>{m.location}</span>
                 </div>
