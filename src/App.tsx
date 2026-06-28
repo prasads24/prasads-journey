@@ -211,7 +211,7 @@ export default function App() {
             
           </div>
           <span className="text-xs font-bold tracking-wider font-sans uppercase text-white/90 hidden sm:inline">
-            Spatial IT Core
+            Prasad Sawant
           </span>
         </div>
 
@@ -386,11 +386,11 @@ export default function App() {
               </div>
               
               <h1 className="text-4xl sm:text-6xl font-extrabold font-display tracking-tighter bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent leading-none py-1">
-                Introducing the Spatial Career Blueprint
+                4.5+ Years Engineering Core Banking Reliability
               </h1>
               
               <p className="text-base sm:text-lg text-white/50 font-sans max-w-xl mx-auto leading-relaxed font-light">
-                A gorgeous narrative journey highlighting 8+ years of engineering robust full-stack platforms, cloud scaling, and telemetry architectures.
+                A narrative journey through production support, platform migrations, and automation at scale.
               </p>
             </section>
 
