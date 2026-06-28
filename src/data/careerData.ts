@@ -25,17 +25,17 @@ export const milestones: CareerMilestone[] = [
     id: "milestone-4",
     role: "Student",
     company: "Amity University",
-    period: "Jab 2026 - Present",
+    period: "Jan 2026 - Present",
     location: "Navi Mumbai, India",
     description: "Pursuing a Master of Computer Applications (MCA) degree with focus on Artificial Intelligence, Machine Learning. Engaging in advanced coursework and research to enhance technical expertise and problem-solving skills.",
     achievements: [
       "Enrolled in advanced AI and ML courses, gaining hands-on experience with neural networks, deep learning, and data analytics.",
     ],
     skills: ["AI/ML", "Deep Learning", "Python", "Cloud", "Research"],
-    category: "Artficial Intelligence",
+    category: "ai",
     impactColor: "from-amber-500 via-orange-500 to-red-500",
     specSheet: {
-      language: "Python, Java",
+      language: "Python, Java",s
       runtime: "TensorFlow, PyTorch",
       architecture: "Artificial Intelligence and Machine Learning Systems",
       database: "Oracle Database",
