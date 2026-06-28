@@ -21,7 +21,7 @@ export default function JourneySpace() {
               <button
                 key={m.id}
                 onClick={() => setSelectedId(m.id)}
-                className={`w-full text-left p-4 rounded-2xl border transition-all relative overflow-hidden group ${
+                className={`w-full text-left p-4 rounded-2xl border transition-all relative group ${
                   isSelected 
                     ? 'bg-white/10 border-white/20 shadow-[0_8px_24px_rgba(255,255,255,0.05)]' 
                     : 'bg-white/5 border-white/5 hover:bg-white/8 hover:border-white/10'
@@ -29,7 +29,7 @@ export default function JourneySpace() {
               >
                 {/* Active side indicator */}
                 {isSelected && (
-                  <div className={`absolute top-0 bottom-0 left-0 w-1 bg-gradient-to-b ${m.impactColor}`} />
+                  <div className={`absolute top-0.5 bottom-0.5 left-0 w-1 rounded-full bg-gradient-to-b ${m.impactColor}`} />
                 )}
 
                 <div className="flex justify-between items-start gap-2 mb-1.5">
