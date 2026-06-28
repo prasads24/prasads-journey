@@ -7,14 +7,14 @@ export const personalBio = {
   tagline: "4.3+ years of expert production support for the core banking system (TCS BaNCS) at State Bank of India (SBI). Dedicated to maintaining 99.9%+ service SLAs, executing platform migrations, and script-automating high-availability workloads.",
   avatar: "/avatar.jpg", // Real profile photo
   socials: {
-    github: "https://github.com/prasadsawant323",
-    linkedin: "https://linkedin.com/in/prasadsawant",
-    instagram: "https://instagram.com/_prasads_",
+    github: "https://github.com/prasads24",
+    linkedin: "https://www.linkedin.com/in/prasadsawant24",
+    instagram: "https://www.instagram.com/_prasads_",
     email: "prasadsawant323@gmail.com"
   },
   stats: {
     experienceYears: "4.7 Yrs",
-    projectsCompleted: "10+",
+    projectsCompleted: "1",
     cloudUptime: "99.9%+",
     linesOfCode: "15% Auto"
   }
@@ -23,11 +23,11 @@ export const personalBio = {
 export const milestones: CareerMilestone[] = [
   {
     id: "milestone-3",
-    role: "Support Executive",
+    role: "System Engineer",
     company: "Tata Consultancy Services Ltd",
-    period: "Dec 2021 - Present",
+    period: "Mar 2025 - Present",
     location: "Navi Mumbai, India",
-    description: "Provide continuous production support and service enhancements for the high-availability Core Banking Solution (CBS) TCS BaNCS application at State Bank of India (SBI), ensuring client business continuity and system scaling.",
+    description: "Provide service enhancements for the high-availability Core Banking Solution (CBS) TCS BaNCS application at State Bank of India (SBI), ensuring client business continuity and system scaling.",
     achievements: [
       "Led migration of AutoSys enterprise job scheduler from version 12.1 (HP-UX) to version 24.0.1 (RHEL) as part of a major platform modernization initiative.",
       "Performed Disaster Recovery (DR) Drills and fail-over switch activities of CBS application, implementing a new approach that reduced execution time by 10%.",
@@ -49,9 +49,9 @@ export const milestones: CareerMilestone[] = [
   },
   {
     id: "milestone-2",
-    role: "Support Operations & Team Lead",
+    role: "Support Executive",
     company: "Tata Consultancy Services Ltd",
-    period: "Dec 2021 - Present",
+    period: "Dec 2021 - Mar 2025",
     location: "Navi Mumbai, India",
     description: "Manage 24/7 technical shifts and cross-functional collaborations to ensure rapid incident response, high-priority defect analysis, and successful close-out operations for State Bank of India's main ledger systems.",
     achievements: [
@@ -86,7 +86,7 @@ export const milestones: CareerMilestone[] = [
       "Acquired comprehensive theoretical and practical foundations in relational database schemas, query designs, and procedural architectures.",
       "Obtained Microsoft Certified: Azure Fundamentals (AZ-900) certification (Jun 2024)."
     ],
-    skills: ["Unix", "SQL", "C++", "Java", "Azure Fundamentals", "Database Design"],
+    skills: ["Unix", "SQL", "C++", "Java", "Azure Fundamentals"],
     category: "frontend",
     impactColor: "from-cyan-400 via-teal-500 to-emerald-500",
     specSheet: {
