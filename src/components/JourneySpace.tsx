@@ -63,7 +63,7 @@ export default function JourneySpace() {
       {/* Right Details Panel */}
       <div className="lg:col-span-7 flex flex-col gap-4 overflow-y-auto max-h-[480px] pr-1 custom-scrollbar">
         {/* Detail Title Header */}
-        <div className="space-y-1 bg-white/5 border border-white/5 rounded-2xl p-5 relative overflow-hidden">
+        <div className="space-y-1 bg-white/5 border border-white/5 rounded-2xl p-5 relative">
           <div className="flex items-center gap-2 text-xs font-mono text-white/40 mb-1">
             <Calendar className="w-3.5 h-3.5" />
             <span>Active Frame: {activeMilestone.period}</span>
@@ -98,7 +98,7 @@ export default function JourneySpace() {
 
         {/* Core Project Panel */}
         {activeMilestone.projectTitle && (
-        <div className="bg-gradient-to-br from-zinc-950/80 to-zinc-900/60 border border-white/10 rounded-2xl p-5 space-y-3.5 relative overflow-hidden">
+        <div className="bg-gradient-to-br from-zinc-950/80 to-zinc-900/60 border border-white/10 rounded-2xl p-5 space-y-3.5 relative">
           <div className="absolute top-0 right-0 p-3 opacity-15">
             <Terminal className="w-24 h-24 text-white" />
           </div>
