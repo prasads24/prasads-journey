@@ -99,8 +99,8 @@ export default function JourneySpace() {
         {/* Core Project Panel */}
         {activeMilestone.projectTitle && (
         <div className="bg-gradient-to-br from-zinc-950/80 to-zinc-900/60 border border-white/10 rounded-2xl p-5 space-y-3.5 relative">
-          <div className="absolute top-0 right-0 p-3 opacity-15">
-            <Terminal className="w-24 h-24 text-white" />
+          <div className="absolute top-0 -right-6 p-3 opacity-15">
+            <Terminal className="w-20 h-20 text-white" />
           </div>
 
           <div className="flex items-center gap-2">
