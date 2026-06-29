@@ -27,7 +27,7 @@ export const milestones: CareerMilestone[] = [
     company: "Amity University",
     period: "Jan 2026 - Present",
     location: "Navi Mumbai, India",
-    description: "Pursuing a Master of Computer Applications (MCA) degree with focus on Artificial Intelligence, Machine Learning. Engaging in advanced coursework and research to enhance technical expertise and problem-solving skills.",
+    description: "Pursuing a Master of Computer Applications (MCA) degree with focus on Artificial Intelligence & Machine Learning. Engaging in advanced coursework and research to enhance technical expertise and problem-solving skills.",
     achievements: [
       "Enrolled in advanced AI and ML courses, gaining hands-on experience with neural networks, deep learning, and data analytics.",
     ],
@@ -56,7 +56,8 @@ export const milestones: CareerMilestone[] = [
       "Led migration of AutoSys enterprise job scheduler from version 12.1 (HP-UX) to version 24.0.1 (RHEL) as part of a major platform modernization initiative.",
       "Performed Disaster Recovery (DR) Drills and fail-over switch activities of CBS application, implementing a new approach that reduced execution time by 10%.",
       "Developed custom scripts and worked with AutoSys scheduler to automate daily manual tasks, resulting in a 15% reduction in manual workload.",
-      "Contributed to the addition of CBS application servers and database nodes to improve system capacity, assisting in configuration and validation with minimal downtime."
+      "Contributed to the addition of CBS application servers and database nodes to improve system capacity, assisting in configuration and validation with minimal downtime.",
+      "Spearheading the platform modernization initiative to upgrade the CBS application from legacy UNIX to modern Linux environments, ensuring seamless transition and operational continuity."
     ],
     skills: ["Unix", "Linux", "Shell Scripting", "AutoSys", "COBOL", "TCS BaNCS"],
     category: "architecture",
@@ -90,12 +91,12 @@ export const milestones: CareerMilestone[] = [
     specSheet: {
       language: "SQL, PL/SQL, COBOL",
       runtime: "Oracle Database, UNIX Mainframe",
-      architecture: "High-Availability Relational Database Operations",
-      database: "Oracle Database, SQL Developer",
+      architecture: "Core Banking Solutions (TCS BaNCS)",
+      database: "Oracle Database",
       devops: "Disaster Recovery (DR) Failover, Incident Response"
     },
     projectTitle: "SBI End-of-Year Processing",
-    projectDesc: "Headed a dedicated engineering shift through the highly intensive year-end financial closing cycle on TCS BaNCS database, ensuring secure batch completion and high SLA adherence."
+    projectDesc: "Spearheaded shift through the highly intensive year-end financial closing cycle on TCS BaNCS, ensuring secure batch completion and high SLA adherence"
   },
   {
     id: "milestone-1",
