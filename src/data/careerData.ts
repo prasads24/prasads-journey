@@ -110,18 +110,18 @@ export const milestones: CareerMilestone[] = [
       "Completed a specialized CDAC Diploma in Multilingual Computer Programming (Jan 2018).",
       "Acquired comprehensive theoretical and practical foundations in relational database schemas, query designs, and procedural architectures.",
     ],
-    skills: ["Unix", "SQL", "C++", "Java", "Azure Fundamentals"],
+    skills: ["Unix", "SQL", "C++", "Python", "DBMS"],
     category: "frontend",
     impactColor: "from-cyan-400 via-teal-500 to-emerald-500",
     specSheet: {
-      language: "Java, C++, SQL, HTML/CSS",
+      language: "Python, C++, SQL, HTML/CSS",
       runtime: "Windows Server, Linux VM",
       architecture: "Relational Database Management Systems (RDBMS)",
       database: "MySQL, Oracle Database",
-      devops: "Microsoft Azure Core Services, UNIX CLI"
+      devops: "Linux Command Line"
     },
-    projectTitle: "Multilingual Solutions Design",
-    projectDesc: "A multi-script development project utilizing C++ and Java to process localization parameters, designed during the CDAC program."
+    projectTitle: "AI-Powered Face unlock door system",
+    projectDesc: "Designed and developed a smart door access system using raspberry Pi, OpenCV, and Python. The system performs real-time facial recognition through a camera, granting access to authorized personnel and enhancing security measures."
   }
 ];
 
