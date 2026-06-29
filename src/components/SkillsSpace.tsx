@@ -1,11 +1,65 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { skills, testimonials } from '../data/careerData';
 import { SkillItem } from '../types';
 import * as LucideIcons from 'lucide-react';
+import { supabase } from '../lib/supabase';
+
+interface PendingTestimonial {
+  id: string;
+  name: string;
+  title: string;
+  company: string;
+  relationship: string;
+  text: string;
+}
 
 export default function SkillsSpace() {
   const [activeCategory, setActiveCategory] = useState<'all' | 'languages' | 'frameworks' | 'cloud' | 'tools' | 'soft'>('all');
   const [hoveredSkill, setHoveredSkill] = useState<SkillItem | null>(null);
+
+  // Visitor-submitted endorsements that have been approved (fetched from Supabase)
+  const [approvedSubmissions, setApprovedSubmissions] = useState<PendingTestimonial[]>([]);
+  const [showEndorseForm, setShowEndorseForm] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({ name: '', title: '', company: '', relationship: '', text: '' });
+
+  useEffect(() => {
+    if (!supabase) return;
+    supabase
+      .from('endorsements')
+      .select('id, name, title, company, relationship, text')
+      .eq('status', 'approved')
+      .order('created_at', { ascending: false })
+      .then(({ data, error }) => {
+        if (!error && data) setApprovedSubmissions(data as PendingTestimonial[]);
+      });
+  }, []);
+
+  const handleSubmitEndorsement = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!supabase) {
+      setSubmitStatus('error');
+      return;
+    }
+    setSubmitStatus('submitting');
+    const { error } = await supabase.from('endorsements').insert([{
+      name: formData.name.trim(),
+      title: formData.title.trim(),
+      company: formData.company.trim(),
+      relationship: formData.relationship.trim(),
+      text: formData.text.trim(),
+      status: 'pending',
+    }]);
+    if (error) {
+      setSubmitStatus('error');
+    } else {
+      setSubmitStatus('success');
+      setFormData({ name: '', title: '', company: '', relationship: '', text: '' });
+    }
+  };
+
+  const allTestimonials = [...testimonials, ...approvedSubmissions];
+
 
   const filteredSkills = activeCategory === 'all' 
     ? skills 
@@ -160,13 +214,22 @@ export default function SkillsSpace() {
               Professional Endorsements
             </h3>
           </div>
-          <span className="text-[10px] font-mono text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-0.5 rounded-full">
-            Verified Colleague & Manager Reviews
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-mono text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-0.5 rounded-full">
+              Verified Colleague & Manager Reviews
+            </span>
+            <button
+              onClick={() => { setSubmitStatus('idle'); setShowEndorseForm(true); }}
+              className="flex items-center gap-1.5 text-[10px] font-semibold text-white bg-blue-600 hover:bg-blue-500 px-3 py-1 rounded-full transition-all"
+            >
+              <LucideIcons.PenLine className="w-3 h-3" />
+              Endorse Me
+            </button>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {testimonials.map((t) => (
+          {allTestimonials.map((t) => (
             <div 
               key={t.id} 
               className="bg-white/[0.03] border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:border-white/20 hover:bg-white/[0.06] transition-all duration-300 group shadow-lg"
@@ -184,12 +247,18 @@ export default function SkillsSpace() {
               </div>
 
               <div className="flex items-center gap-3 pt-3.5 border-t border-white/5">
-                <img 
-                  src={t.avatar} 
-                  alt={t.name} 
-                  className="w-9 h-9 rounded-full object-cover border border-white/15 shadow-sm"
-                  referrerPolicy="no-referrer"
-                />
+                {('avatar' in t && t.avatar) ? (
+                  <img 
+                    src={(t as typeof testimonials[0]).avatar} 
+                    alt={t.name} 
+                    className="w-9 h-9 rounded-full object-cover border border-white/15 shadow-sm"
+                    referrerPolicy="no-referrer"
+                  />
+                ) : (
+                  <div className="w-9 h-9 rounded-full bg-blue-500/15 border border-blue-500/20 flex items-center justify-center text-blue-300 text-xs font-bold shrink-0">
+                    {t.name.split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase()}
+                  </div>
+                )}
                 <div className="min-w-0">
                   <h4 className="text-xs font-bold text-white truncate">{t.name}</h4>
                   <p className="text-[10px] text-white/50 truncate">
@@ -204,6 +273,100 @@ export default function SkillsSpace() {
           ))}
         </div>
       </div>
+
+      {/* Endorse Me Submission Modal */}
+      {showEndorseForm && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+          onClick={() => setShowEndorseForm(false)}
+        >
+          <div 
+            className="bg-zinc-950 border border-white/10 rounded-3xl p-6 w-full max-w-md space-y-4 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {submitStatus === 'success' ? (
+              <div className="text-center py-6 space-y-3">
+                <LucideIcons.CheckCircle2 className="w-10 h-10 text-emerald-400 mx-auto" />
+                <h3 className="text-base font-bold text-white">Thank you!</h3>
+                <p className="text-xs text-white/60 leading-relaxed">
+                  Your endorsement has been submitted. It'll appear here once reviewed and approved.
+                </p>
+                <button
+                  onClick={() => setShowEndorseForm(false)}
+                  className="text-xs font-semibold text-blue-400 hover:text-blue-300 mt-2"
+                >
+                  Close
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-bold text-white uppercase tracking-wide">
+                    Endorse Prasad
+                  </h3>
+                  <button onClick={() => setShowEndorseForm(false)} className="text-white/40 hover:text-white">
+                    <LucideIcons.X className="w-4 h-4" />
+                  </button>
+                </div>
+                <p className="text-[11px] text-white/50 leading-relaxed">
+                  Worked with Prasad? Share a quick endorsement. Submissions are reviewed before appearing publicly.
+                </p>
+                <form onSubmit={handleSubmitEndorsement} className="space-y-3">
+                  <input
+                    required
+                    placeholder="Your name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-white/30 outline-none focus:border-blue-500/50"
+                  />
+                  <input
+                    required
+                    placeholder="Your title (e.g. Senior IT Manager)"
+                    value={formData.title}
+                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-white/30 outline-none focus:border-blue-500/50"
+                  />
+                  <input
+                    required
+                    placeholder="Company"
+                    value={formData.company}
+                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-white/30 outline-none focus:border-blue-500/50"
+                  />
+                  <input
+                    required
+                    placeholder="Relationship (e.g. Manager, Colleague)"
+                    value={formData.relationship}
+                    onChange={(e) => setFormData({ ...formData, relationship: e.target.value })}
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-white/30 outline-none focus:border-blue-500/50"
+                  />
+                  <textarea
+                    required
+                    placeholder="Your endorsement..."
+                    value={formData.text}
+                    onChange={(e) => setFormData({ ...formData, text: e.target.value })}
+                    rows={4}
+                    maxLength={500}
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-white/30 outline-none focus:border-blue-500/50 resize-none"
+                  />
+                  {submitStatus === 'error' && (
+                    <p className="text-[11px] text-red-400">
+                      Something went wrong submitting this. Please try again in a moment.
+                    </p>
+                  )}
+                  <button
+                    type="submit"
+                    disabled={submitStatus === 'submitting'}
+                    className="w-full bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white text-xs font-semibold py-2.5 rounded-xl transition-all"
+                  >
+                    {submitStatus === 'submitting' ? 'Submitting...' : 'Submit Endorsement'}
+                  </button>
+                </form>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
