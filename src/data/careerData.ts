@@ -4,7 +4,7 @@ export const personalBio = {
   name: "Prasad Sawant",
   title: "System Engineer",
   location: "Navi Mumbai, India",
-  tagline: "4.5+ years of expert production support for the core banking system (TCS BaNCS) at State Bank of India (SBI). Dedicated to maintaining 99.9%+ service SLAs, executing platform migrations, and script-automating high-availability workloads.",
+  tagline: "Maintaining mission-critical banking platforms powering millions of transactions. Specialized in Linux, Oracle, automation, platform migrations, and building reliable systems with 99.9%+ availability. Expanding into AI-powered automation and modern software engineering.",
   avatar: "/avatar.jpg", // Real profile photo
   socials: {
     github: "https://github.com/prasads24",
@@ -14,7 +14,7 @@ export const personalBio = {
   },
   stats: {
     experienceYears: "4.7 Yrs",
-    projectsCompleted: "1",
+    projectsCompleted: "100+",
     cloudUptime: "99.9%+",
     linesOfCode: "15% Auto"
   }
