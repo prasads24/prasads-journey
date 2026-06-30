@@ -21,32 +21,9 @@ export const personalBio = {
 };
 
 export const milestones: CareerMilestone[] = [
+  
   {
     id: "milestone-4",
-    role: "Student",
-    company: "Amity University",
-    period: "Jan 2026 - Present",
-    location: "Navi Mumbai, India",
-    description: "Transitioning from enterprise production engineering to AI-powered software development through advanced coursework, practical projects, and modern machine learning technologies.",
-    achievements: [
-      "Enrolled in advanced AI and ML courses, gaining hands-on experience with neural networks, deep learning, and data analytics.",
-    ],
-    skills: ["AI/ML", "Deep Learning", "Python", "Cloud", "Research"],
-    category: "ai",
-    impactColor: "from-amber-500 via-orange-500 to-red-500",
-    specSheet: {
-      language: "Python, C++",
-      runtime: "TensorFlow, PyTorch",
-      architecture: "Artificial Intelligence and Machine Learning Systems",
-      database: "Oracle Database",
-      devops: "Cloud Platforms (VMware)"
-    },
-    projectTitle: '',
-    projectDesc: ''
-  },
-
-  {
-    id: "milestone-3",
     role: "System Engineer",
     company: "Tata Consultancy Services Ltd",
     period: "Mar 2025 - Present",
@@ -71,6 +48,29 @@ export const milestones: CareerMilestone[] = [
     },
     projectTitle: "AutoSys Platform Modernization",
     projectDesc: "Coordinated the end-to-end upgrade of the critical enterprise job scheduler from legacy HP-UX environments to modern Red Hat Enterprise Linux (RHEL), modernizing thousands of batch jobs with zero operational disruption."
+  },
+  {
+    id: "milestone-4",
+    role: "Student",
+    company: "Amity University",
+    period: "Jan 2026 - Present",
+    location: "Navi Mumbai, India",
+    description: "Transitioning from enterprise production engineering to AI-powered software development through advanced coursework, practical projects, and modern machine learning technologies.",
+    achievements: [
+      "Enrolled in advanced AI and ML courses, gaining hands-on experience with neural networks, deep learning, and data analytics.",
+    ],
+    skills: ["AI/ML", "Deep Learning", "Python", "Cloud", "Research"],
+    category: "ai",
+    impactColor: "from-amber-500 via-orange-500 to-red-500",
+    specSheet: {
+      language: "Python, C++",
+      runtime: "TensorFlow, PyTorch",
+      architecture: "Artificial Intelligence and Machine Learning Systems",
+      database: "Oracle Database",
+      devops: "Cloud Platforms (VMware)"
+    },
+    projectTitle: '',
+    projectDesc: ''
   },
   {
     id: "milestone-2",
