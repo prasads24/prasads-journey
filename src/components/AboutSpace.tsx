@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { personalBio } from '../data/careerData';
 import { Github, Linkedin, Instagram, Mail, Award, Cpu, Flame, CheckCircle, MapPin, Sparkles } from 'lucide-react';
 
-const STATUS_ROTATION = ['ACTIVE', 'BUILDING', 'LEARNING', 'AUTOMATING', 'ONLINE'];
+const STATUS_ROTATION = ['ACTIVE', 'LEARNING', 'BUILDING', 'AUTOMATING'];
 
 export default function AboutSpace() {
   const [statusIndex, setStatusIndex] = useState(0);
