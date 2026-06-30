@@ -30,11 +30,11 @@ export const milestones: CareerMilestone[] = [
     location: "Navi Mumbai, India",
     description: "Provide service enhancements for the high-availability Core Banking Solution (CBS) TCS BaNCS application at State Bank of India (SBI), ensuring client business continuity and system scaling.",
     achievements: [
+      "Playing a key engineering role in the ongoing platform modernization initiative to upgrade the CBS application from legacy UNIX to modern Linux environments, ensuring seamless transition and operational continuity.",
       "Led migration of AutoSys enterprise job scheduler from version 12.1 (HP-UX) to version 24.0.1 (RHEL) as part of a major platform modernization initiative.",
       "Designed and executed Disaster Recovery (DR) failover procedures for the CBS platform, reducing recovery execution time by approximately 10% through process optimization.",
       "Developed Shell automation scripts integrated with AutoSys to eliminate repetitive operational tasks, reducing manual workload by approximately 15% and improving execution consistency.",
       "Contributed to the addition of CBS application servers and database nodes to improve system capacity, assisting in configuration and validation with minimal downtime.",
-      "Playing a key engineering role in the ongoing platform modernization initiative to upgrade the CBS application from legacy UNIX to modern Linux environments, ensuring seamless transition and operational continuity."
     ],
     skills: ["Unix", "Linux", "Shell Scripting", "AutoSys", "COBOL", "TCS BaNCS"],
     category: "architecture",
