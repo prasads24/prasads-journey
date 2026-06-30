@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { personalBio } from '../data/careerData';
 import { Github, Linkedin, Instagram, Mail, Award, Cpu, Flame, CheckCircle, MapPin, Sparkles } from 'lucide-react';
 
+const STATUS_ROTATION = ['ACTIVE', 'BUILDING', 'LEARNING', 'AUTOMATING', 'ONLINE'];
+
 export default function AboutSpace() {
+  const [statusIndex, setStatusIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStatusIndex((prev) => (prev + 1) % STATUS_ROTATION.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="space-y-6">
       {/* Intro Hero Section */}
@@ -16,8 +27,11 @@ export default function AboutSpace() {
             className="relative w-24 h-24 rounded-2xl object-cover border border-white/20 shadow-2xl referrer-policy"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border border-white/10 text-white flex items-center gap-1 shadow-lg">
-            <Sparkles className="w-3 h-3 text-white" /> ACTIVE
+          <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border border-white/10 text-white flex items-center gap-1 shadow-lg min-w-[78px] justify-center">
+            <Sparkles className="w-3 h-3 text-white shrink-0" />
+            <span key={statusIndex} className="animate-fade-in">
+              {STATUS_ROTATION[statusIndex]}
+            </span>
           </div>
         </div>
 
@@ -62,7 +76,7 @@ export default function AboutSpace() {
           </div>
           <div className="mt-2">
             <span className="text-2xl font-bold text-white tracking-tight">{personalBio.stats.projectsCompleted}+</span>
-            <span className="text-[10px] text-white/50 block font-sans">Deployments Done</span>
+            <span className="text-[10px] text-white/50 block font-sans">Batch Jobs Automated</span>
           </div>
         </div>
 

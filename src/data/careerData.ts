@@ -14,7 +14,7 @@ export const personalBio = {
   },
   stats: {
     experienceYears: "4.7 Yrs",
-    projectsCompleted: "100+",
+    projectsCompleted: "100",
     cloudUptime: "99.9%+",
     linesOfCode: "15% Auto"
   }
