@@ -50,7 +50,7 @@ export const milestones: CareerMilestone[] = [
     projectDesc: "Coordinated the end-to-end upgrade of the critical enterprise job scheduler from legacy HP-UX environments to modern Red Hat Enterprise Linux (RHEL), modernizing thousands of batch jobs with zero operational disruption."
   },
   {
-    id: "milestone-4",
+    id: "milestone-3",
     role: "Student",
     company: "Amity University",
     period: "Jan 2026 - Present",
