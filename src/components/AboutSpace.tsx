@@ -10,7 +10,7 @@ export default function AboutSpace() {
   useEffect(() => {
     const interval = setInterval(() => {
       setStatusIndex((prev) => (prev + 1) % STATUS_ROTATION.length);
-    }, 3000);
+    }, 2000);
     return () => clearInterval(interval);
   }, []);
 
