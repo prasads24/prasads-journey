@@ -448,15 +448,15 @@ export default function App() {
                   const isCurrentPeak = idx === 0;
                   return (
                     <div key={m.id} className="relative">
-                      {isCurrentPeak && (
-                        <div className="absolute -top-3 left-6 z-10 px-3 py-1 bg-blue-500 text-[10px] font-black rounded-full uppercase tracking-tighter text-white">
-                          Current Peak
-                        </div>
-                      )}
                       <SpatialGlassCard 
                         glowColor={m.category === 'architecture' ? 'rgba(255, 149, 0, 0.25)' : m.category === 'backend' ? 'rgba(175, 82, 222, 0.25)' : 'rgba(0, 122, 255, 0.25)'}
                         className={`p-6 sm:p-8 ${isCurrentPeak ? 'border-blue-500/30 bg-white/10 shadow-blue-500/5' : ''}`}
                       >
+                        {isCurrentPeak && (
+                          <div className="absolute -top-3 left-6 z-10 px-3 py-1 bg-blue-500 text-[10px] font-black rounded-full uppercase tracking-tighter text-white">
+                            Current Peak
+                          </div>
+                        )}
                         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
                           {/* Frame Column */}
                           <div className="md:col-span-4 space-y-3 border-b md:border-b-0 md:border-r border-white/5 pb-4 md:pb-0 md:pr-4 flex flex-col justify-between">
