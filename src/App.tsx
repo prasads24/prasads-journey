@@ -450,10 +450,10 @@ export default function App() {
                     <div key={m.id} className="relative">
                       <SpatialGlassCard 
                         glowColor={m.category === 'architecture' ? 'rgba(255, 149, 0, 0.25)' : m.category === 'backend' ? 'rgba(175, 82, 222, 0.25)' : 'rgba(0, 122, 255, 0.25)'}
-                        className={`${isCurrentPeak ? 'pt-9 px-6 pb-6 sm:pt-10 sm:px-8 sm:pb-8 border-blue-500/30 bg-white/10 shadow-blue-500/5' : 'p-6 sm:p-8'}`}
+                        className={`p-6 sm:p-8 ${isCurrentPeak ? 'border-blue-500/30 bg-white/10 shadow-blue-500/5' : ''}`}
                       >
                         {isCurrentPeak && (
-                          <div className="absolute top-3 left-6 z-10 px-3 py-1 bg-blue-500 text-[10px] font-black rounded-full uppercase tracking-tighter text-white">
+                          <div className="inline-flex mb-4 px-3 py-1 bg-blue-500 text-[10px] font-black rounded-full uppercase tracking-tighter text-white">
                             Current Peak
                           </div>
                         )}
