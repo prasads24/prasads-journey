@@ -80,7 +80,7 @@ export const milestones: CareerMilestone[] = [
     location: "Navi Mumbai, India",
     description: "Manage 24/7 technical shifts and cross-functional collaborations to ensure rapid incident response, high-priority defect analysis, and successful close-out operations for State Bank of India's main ledger systems.",
     achievements: [
-      "Led support team through the critical CBS End-of-Year operations phase, implementing process enhancements that boosted overall team productivity.",
+      "Led support team through the critical CBS End-of-Year operations phase, implementing process enhancements that boosted overall team productivity and client satisfaction.",
       "Managed support teams in shifts to deliver project support in complete alignment with client SLA expectations and customer stakeholders.",
       "Diagnosed and resolved production issues using hands-on COBOL debugging techniques to ensure financial batch accuracy.",
       "Performed Oracle database import-export operations utilizing the Oracle Data-Pump utility to manage diagnostics data replication."
