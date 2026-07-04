@@ -94,29 +94,29 @@ export default function SkillsSpace() {
       </div>
 
       {/* Focus Inspector (Vision Pro Gaze Info Box) */}
-      <div className="h-28 bg-white/5 border border-white/10 rounded-2xl p-4 flex items-center justify-between transition-all duration-300 relative overflow-hidden">
+      <div className="min-h-[7rem] bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 transition-all duration-300 relative overflow-hidden">
         {hoveredSkill ? (
           <>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 min-w-0">
               {/* Animated Skill Logo */}
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-500/20 to-purple-500/20 border border-white/15 flex items-center justify-center text-blue-300 shadow-lg shrink-0">
                 <DynamicIcon name={hoveredSkill.iconName} className="w-7 h-7" />
               </div>
-              <div>
-                <h4 className="text-sm font-bold text-white flex items-center gap-2">
+              <div className="min-w-0">
+                <h4 className="text-sm font-bold text-white flex items-center gap-2 flex-wrap">
                   {hoveredSkill.name}
                   <span className="text-[10px] font-mono font-normal text-white/50 bg-white/5 border border-white/5 px-2 py-0.5 rounded-full">
                     {hoveredSkill.yearsOfExperience} yrs exp
                   </span>
                 </h4>
-                <p className="text-xs text-white/60 mt-1 leading-relaxed max-w-xl">
+                <p className="text-xs text-white/60 mt-1 leading-relaxed">
                   {hoveredSkill.description}
                 </p>
               </div>
             </div>
 
             {/* Proficiency visual dial */}
-            <div className="flex flex-col items-center justify-center shrink-0">
+            <div className="flex flex-col items-center justify-center shrink-0 self-center">
               <div className="relative w-16 h-16 flex items-center justify-center">
                 <svg className="w-full h-full transform -rotate-90">
                   <circle 
