@@ -78,7 +78,7 @@ export const milestones: CareerMilestone[] = [
     company: "Tata Consultancy Services Ltd",
     period: "Dec 2021 - Mar 2025",
     location: "Navi Mumbai, India",
-    description: "Manage 24/7 technical shifts and cross-functional collaborations to ensure rapid incident response, high-priority defect analysis, and successful close-out operations for State Bank of India's main ledger systems.",
+    description: "Manage 24/7 technical shifts and cross-functional collaborations to ensure rapid incident response, high-priority defect analysis, and successful close-out operations for State Bank of India's Core Banking Systems.",
     achievements: [
       "Led support team through the critical CBS End-of-Year operations phase, implementing process enhancements that boosted overall team productivity and client satisfaction.",
       "Managed support teams in shifts to deliver project support in complete alignment with client SLA expectations and customer stakeholders.",
