@@ -160,7 +160,7 @@ export default function TerminalSpace() {
 
       {/* Terminal Input field */}
       <div className="flex items-center gap-2 bg-zinc-950/80 px-4 py-3 border-t border-white/5 shrink-0">
-        <span className="text-white/40 font-bold select-none">prasad-spatial-core:~ $</span>
+        <span className="text-white/40 font-bold select-none">production-core:~ $</span>
         <input
           type="text"
           value={input}
