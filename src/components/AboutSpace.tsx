@@ -98,7 +98,7 @@ export default function AboutSpace() {
           </div>
           <div className="mt-2">
             <span className="text-2xl font-bold text-white tracking-tight">{personalBio.stats.linesOfCode}</span>
-            <span className="text-[10px] text-white/50 block font-sans">Pruned, typed statements</span>
+            <span className="text-[10px] text-white/50 block font-sans">Critical Incidents Resolved</span>
           </div>
         </div>
       </div>
