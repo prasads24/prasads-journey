@@ -10,7 +10,7 @@ interface TerminalLine {
 export default function TerminalSpace() {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState<TerminalLine[]>([
-    { text: "System Initialized: Spatial Core v1.4.0", type: "system" },
+    { text: "System Initialized: Production Core v1.4.0", type: "system" },
     { text: "Type 'help' to view available secure protocol commands.", type: "output" }
   ]);
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -21,7 +21,7 @@ export default function TerminalSpace() {
 
   const executeCommand = (cmdText: string) => {
     const trimmed = cmdText.trim().toLowerCase();
-    const newHistory = [...history, { text: `prasad-spatial-core:~ $ ${cmdText}`, type: "input" as const }];
+    const newHistory = [...history, { text: `production-core:~ $ ${cmdText}`, type: "input" as const }];
 
     if (trimmed === '') {
       setHistory(newHistory);
