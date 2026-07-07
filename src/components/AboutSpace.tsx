@@ -93,7 +93,7 @@ export default function AboutSpace() {
 
         <div className="bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-col justify-between hover:border-white/20 hover:bg-white/10 transition-all duration-300">
           <div className="flex justify-between items-start">
-            <span className="text-[10px] font-mono text-white/40 uppercase tracking-wider">Lines Contributed</span>
+            <span className="text-[10px] font-mono text-white/40 uppercase tracking-wider">Incident Response</span>
             <CheckCircle className="w-4 h-4 text-blue-400" />
           </div>
           <div className="mt-2">
