@@ -78,7 +78,7 @@ export const milestones: CareerMilestone[] = [
     company: "Tata Consultancy Services Ltd",
     period: "Dec 2021 - Mar 2025",
     location: "Navi Mumbai, India",
-    description: "Manage 24/7 technical shifts and cross-functional collaborations to ensure rapid incident response, high-priority defect analysis, and successful close-out operations for State Bank of India's Core Banking Systems.",
+    description: "Manage 24/7 technical shifts and cross-functional collaborations to ensure rapid incident response, high-priority defect analysis, and successful close-out operations for State Bank of India's Core Banking System.",
     achievements: [
       "Led support team through the critical CBS End-of-Year operations phase, implementing process enhancements that boosted overall team productivity and client satisfaction.",
       "Managed support teams in shifts to deliver project support in complete alignment with client SLA expectations and customer stakeholders.",
@@ -235,31 +235,5 @@ export const skills: SkillItem[] = [
 ];
 
 export const testimonials: TestimonialItem[] = [
-  {
-    id: "testimonial-1",
-    name: "Aravind Subramanian",
-    title: "Senior IT Delivery Manager",
-    company: "State Bank of India (SBI)",
-    relationship: "Client Director",
-    text: "Prasad was invaluable during our massive AutoSys upgrade and the critical End-of-Year operations. His quick analysis during high-priority incidents ensured our core banking application maintained flawless continuity.",
-    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=128&h=128"
-  },
-  {
-    id: "testimonial-2",
-    name: "Meera Nair",
-    title: "Production Support Lead",
-    company: "Tata Consultancy Services (TCS)",
-    relationship: "Manager",
-    text: "Prasad stands out for his exceptional command over UNIX systems and shell automation. By script-automating our daily validation checklists, he saved our squad 15% of daily manual workload. He is an adaptable leader and an incredibly fast learner.",
-    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=128&h=128"
-  },
-  {
-    id: "testimonial-3",
-    name: "Sanjay Deshmukh",
-    title: "Database Administrator",
-    company: "Tata Consultancy Services (TCS)",
-    relationship: "Senior Colleague",
-    text: "Prasad's competence with Oracle database maintenance and disaster recovery transitions was a game-changer during our high-throughput stress drills. His fail-over approach cut switchover execution by 10%. Very detail-oriented.",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=128&h=128"
-  }
+ 
 ];
