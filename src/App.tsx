@@ -7,6 +7,7 @@ import AboutSpace from './components/AboutSpace';
 import JourneySpace from './components/JourneySpace';
 import SkillsSpace from './components/SkillsSpace';
 import TerminalSpace from './components/TerminalSpace';
+import IncidentWarRoom from './components/IncidentWarRoom';
 import { personalBio, milestones, skills } from './data/careerData';
 import { SpatialWindow } from './types';
 import { 
@@ -30,7 +31,8 @@ import {
   MapPin,
   Calendar,
   Layers,
-  Cpu
+  Cpu,
+  Siren
 } from 'lucide-react';
 
 export default function App() {
@@ -42,6 +44,7 @@ export default function App() {
   const [isPlayingAmbient, setIsPlayingAmbient] = useState(false);
   const [currentTime, setCurrentTime] = useState('');
   const [hoveredDockItem, setHoveredDockItem] = useState<string | null>(null);
+  const [showWarRoom, setShowWarRoom] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   // Detect narrow/mobile viewports so the desktop-style floating windows
@@ -540,6 +543,18 @@ export default function App() {
         immersionLevel={immersionLevel} 
         setImmersionLevel={setImmersionLevel} 
       />
+
+      {/* Hidden easter egg: barely-visible siren opens the Incident War Room game */}
+      <button
+        onClick={() => setShowWarRoom(true)}
+        className="fixed bottom-24 left-4 sm:bottom-6 sm:left-6 z-40 p-2 text-white/10 hover:text-red-400/80 transition-colors duration-500"
+        title=""
+        aria-label="hidden"
+      >
+        <Siren className="w-4 h-4" />
+      </button>
+
+      {showWarRoom && <IncidentWarRoom onClose={() => setShowWarRoom(false)} />}
     </div>
   );
 }
