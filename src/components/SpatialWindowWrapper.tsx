@@ -36,7 +36,15 @@ export default function SpatialWindowWrapper({
 }: SpatialWindowWrapperProps) {
   const windowRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+
+  // Held in refs, not state: the offset never changes mid-drag, and keeping
+  // onMove in a ref stops the effect below from re-subscribing its listeners
+  // on every re-render (onMove is a fresh closure each render).
+  const dragOffsetRef = useRef({ x: 0, y: 0 });
+  const onMoveRef = useRef(onMove);
+  useEffect(() => {
+    onMoveRef.current = onMove;
+  });
 
   // Handle Drag Start
   const startDrag = (e: React.MouseEvent) => {
@@ -48,11 +56,8 @@ export default function SpatialWindowWrapper({
     }
 
     onFocus();
+    dragOffsetRef.current = { x: e.clientX - x, y: e.clientY - y };
     setIsDragging(true);
-    setDragOffset({
-      x: e.clientX - x,
-      y: e.clientY - y
-    });
     e.preventDefault();
   };
 
@@ -60,11 +65,25 @@ export default function SpatialWindowWrapper({
   useEffect(() => {
     if (!isDragging) return;
 
+    // mousemove can fire more often than the screen repaints, so coalesce
+    // updates down to at most one per animation frame.
+    let frameId = 0;
+    let pending: { x: number; y: number } | null = null;
+
+    const flush = () => {
+      frameId = 0;
+      if (pending) {
+        onMoveRef.current(pending.x, pending.y);
+        pending = null;
+      }
+    };
+
     const handleMouseMove = (e: MouseEvent) => {
-      // Keep within reasonable screen bounds
-      const nextX = e.clientX - dragOffset.x;
-      const nextY = e.clientY - dragOffset.y;
-      onMove(nextX, nextY);
+      pending = {
+        x: e.clientX - dragOffsetRef.current.x,
+        y: e.clientY - dragOffsetRef.current.y,
+      };
+      if (!frameId) frameId = requestAnimationFrame(flush);
     };
 
     const handleMouseUp = () => {
@@ -75,16 +94,21 @@ export default function SpatialWindowWrapper({
     window.addEventListener('mouseup', handleMouseUp);
 
     return () => {
+      if (frameId) cancelAnimationFrame(frameId);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [isDragging, dragOffset, onMove]);
+  }, [isDragging]);
 
   return (
     <div
       ref={windowRef}
       onMouseDown={onFocus}
-      className={`${isMobile ? 'relative w-full mb-6' : 'absolute'} rounded-3xl flex flex-col shadow-[0_32px_64px_rgba(0,0,0,0.7)] border transition-all duration-300 ${
+      className={`${isMobile ? 'relative w-full mb-6' : 'absolute'} rounded-3xl flex flex-col shadow-[0_32px_64px_rgba(0,0,0,0.7)] border ${
+        // While dragging, any transition on left/top makes the window ease toward
+        // the cursor instead of following it, which reads as lag and stutter.
+        isDragging ? '' : 'transition-all duration-300'
+      } ${
         isActive 
           ? 'border-white/20 shadow-blue-500/15 scale-100' 
           : 'border-white/10 opacity-75 scale-[0.98]'
