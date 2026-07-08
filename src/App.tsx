@@ -277,7 +277,10 @@ export default function App() {
       {isWorkspaceMode ? (
         <main className="relative min-h-screen pt-24 pb-12 w-full overflow-hidden flex items-center justify-center">
           {/* Floating Left VisionOS Circular App Dock */}
-          <nav className="fixed left-6 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-3.5 p-3.5 bg-black/30 backdrop-blur-3xl border border-white/10 rounded-full shadow-[0_16px_48px_rgba(0,0,0,0.6)] group hover:border-white/20 hover:shadow-blue-500/5 transition-all duration-300">
+          <nav className={isMobile
+            ? "fixed bottom-4 left-1/2 -translate-x-1/2 z-40 flex flex-row gap-3 p-3 bg-black/40 backdrop-blur-3xl border border-white/10 rounded-full shadow-[0_16px_48px_rgba(0,0,0,0.6)]"
+            : "fixed left-6 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-3.5 p-3.5 bg-black/30 backdrop-blur-3xl border border-white/10 rounded-full shadow-[0_16px_48px_rgba(0,0,0,0.6)] group hover:border-white/20 hover:shadow-blue-500/5 transition-all duration-300"
+          }>
             {dockItems.map(item => {
               const win = windows.find(w => w.id === item.id);
               const isOpen = win?.isOpen && !win?.isMinimized;
@@ -292,7 +295,7 @@ export default function App() {
                   onMouseLeave={() => setHoveredDockItem(null)}
                 >
                   {/* Floating Tooltip Pill */}
-                  {hoveredDockItem === item.id && (
+                  {!isMobile && hoveredDockItem === item.id && (
                     <div className="absolute left-16 px-3 py-1.5 bg-black/80 backdrop-blur-xl border border-white/10 rounded-xl text-[11px] text-white font-medium tracking-wide whitespace-nowrap shadow-2xl animate-fade-in pointer-events-none">
                       {item.label}
                       {win?.isMinimized && <span className="text-[9px] text-white/40 block">Minimized to Dock</span>}
@@ -326,7 +329,7 @@ export default function App() {
           {/* Canvas Containing Floating Modular Glass Windows */}
           <div 
             className={isMobile 
-              ? "relative w-full px-4 pb-16" 
+              ? "relative w-full px-4 pb-36" 
               : "relative w-full h-[85vh] max-w-7xl mx-auto rounded-3xl overflow-hidden pointer-events-none"
             }
             id="workspace-canvas"

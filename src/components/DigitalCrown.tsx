@@ -23,7 +23,7 @@ export default function DigitalCrown({ immersionLevel, setImmersionLevel }: Digi
 
   return (
     <div 
-      className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2"
+      className="fixed bottom-24 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-2"
       id="digital-crown-container"
     >
       {/* Tooltip Description */}
