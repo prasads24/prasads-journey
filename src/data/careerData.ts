@@ -40,7 +40,7 @@ export const milestones: CareerMilestone[] = [
     category: "architecture",
     impactColor: "from-amber-500 via-orange-500 to-red-500",
     specSheet: {
-      language: "Shell Scripting (Bash), COBOL",
+      language: "Shell Scripting, COBOL",
       runtime: "Red Hat Enterprise Linux (RHEL), HP-UX",
       architecture: "Core Banking Solutions (TCS BaNCS)",
       database: "Oracle Database (Data Pump Utility)",
