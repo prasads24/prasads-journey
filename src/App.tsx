@@ -7,7 +7,7 @@ import AboutSpace from './components/AboutSpace';
 import JourneySpace from './components/JourneySpace';
 import SkillsSpace from './components/SkillsSpace';
 import TerminalSpace from './components/TerminalSpace';
-import IncidentWarRoom from './components/IncidentWarRoom';
+import UptimeRunner from './components/UptimeRunner';
 import { personalBio, milestones, skills } from './data/careerData';
 import { SpatialWindow } from './types';
 import { 
@@ -32,7 +32,7 @@ import {
   Calendar,
   Layers,
   Cpu,
-  Siren
+  Server
 } from 'lucide-react';
 
 export default function App() {
@@ -44,7 +44,7 @@ export default function App() {
   const [isPlayingAmbient, setIsPlayingAmbient] = useState(false);
   const [currentTime, setCurrentTime] = useState('');
   const [hoveredDockItem, setHoveredDockItem] = useState<string | null>(null);
-  const [showWarRoom, setShowWarRoom] = useState(false);
+  const [showGame, setShowGame] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   // Detect narrow/mobile viewports so the desktop-style floating windows
@@ -544,17 +544,17 @@ export default function App() {
         setImmersionLevel={setImmersionLevel} 
       />
 
-      {/* Hidden easter egg: barely-visible siren opens the Incident War Room game */}
+      {/* Hidden easter egg: barely-visible server icon opens the Uptime Runner game */}
       <button
-        onClick={() => setShowWarRoom(true)}
-        className="fixed bottom-24 left-4 sm:bottom-6 sm:left-6 z-40 p-2 text-white/10 hover:text-red-400/80 transition-colors duration-500"
+        onClick={() => setShowGame(true)}
+        className="fixed bottom-24 left-4 sm:bottom-6 sm:left-6 z-40 p-2 text-white/10 hover:text-blue-400/80 transition-colors duration-500"
         title=""
         aria-label="hidden"
       >
-        <Siren className="w-4 h-4" />
+        <Server className="w-4 h-4" />
       </button>
 
-      {showWarRoom && <IncidentWarRoom onClose={() => setShowWarRoom(false)} />}
+      {showGame && <UptimeRunner onClose={() => setShowGame(false)} />}
     </div>
   );
 }
