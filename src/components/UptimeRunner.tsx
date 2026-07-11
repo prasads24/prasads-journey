@@ -51,7 +51,23 @@ export default function UptimeRunner({ onClose }: UptimeRunnerProps) {
     }
   });
 
-  // Mutable game state kept in refs so the render loop doesn't fight React's render cycle
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  // Cached gradients + offscreen canvases: rebuilding gradients and applying
+  // shadowBlur every frame is expensive, especially on mobile GPUs. These are
+  // built once (or once per size) and simply reused/redrawn each frame.
+  const cacheRef = useRef<{
+    groundGrad?: CanvasGradient;
+    playerSprite?: HTMLCanvasElement;
+    obstacleSprite?: HTMLCanvasElement;
+  }>({});
+
   const stateRef = useRef({
     playerY: 0,
     velocityY: 0,
@@ -184,12 +200,16 @@ export default function UptimeRunner({ onClose }: UptimeRunnerProps) {
 
       // --- Draw ---
       ctx.clearRect(0, 0, width, height);
+      const cache = cacheRef.current;
 
-      // Ground line
-      const groundGradient = ctx.createLinearGradient(0, groundY, 0, height);
-      groundGradient.addColorStop(0, 'rgba(59, 130, 246, 0.15)');
-      groundGradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
-      ctx.fillStyle = groundGradient;
+      // Ground gradient: same every frame regardless of size changes mid-game, build once
+      if (!cache.groundGrad) {
+        const g = ctx.createLinearGradient(0, groundY, 0, height);
+        g.addColorStop(0, 'rgba(59, 130, 246, 0.15)');
+        g.addColorStop(1, 'rgba(59, 130, 246, 0)');
+        cache.groundGrad = g;
+      }
+      ctx.fillStyle = cache.groundGrad;
       ctx.fillRect(0, groundY, width, height - groundY);
       ctx.strokeStyle = 'rgba(255,255,255,0.15)';
       ctx.lineWidth = 1;
@@ -198,40 +218,60 @@ export default function UptimeRunner({ onClose }: UptimeRunnerProps) {
       ctx.lineTo(width, groundY);
       ctx.stroke();
 
-      // Player (rounded server block with a pulse glow)
-      ctx.save();
-      ctx.shadowColor = 'rgba(59, 130, 246, 0.7)';
-      ctx.shadowBlur = 16;
-      const pGrad = ctx.createLinearGradient(playerX, playerTop, playerX + PLAYER_SIZE, playerBottom);
-      pGrad.addColorStop(0, '#60a5fa');
-      pGrad.addColorStop(1, '#4f46e5');
-      ctx.fillStyle = pGrad;
-      roundRect(ctx, playerX, playerTop, PLAYER_SIZE, PLAYER_SIZE, 8);
-      ctx.fill();
-      ctx.restore();
-      // Little status dot on player, like a signal light
-      ctx.fillStyle = '#22c55e';
-      ctx.beginPath();
-      ctx.arc(playerX + PLAYER_SIZE - 6, playerTop + 6, 3, 0, Math.PI * 2);
-      ctx.fill();
+      // Player sprite: pre-rendered once (glow baked in), just stamped each frame from here on
+      if (!cache.playerSprite) {
+        const pad = isMobile ? 4 : 18; // smaller glow padding on mobile since blur is skipped there
+        const sc = document.createElement('canvas');
+        sc.width = PLAYER_SIZE + pad * 2;
+        sc.height = PLAYER_SIZE + pad * 2;
+        const sctx = sc.getContext('2d')!;
+        if (!isMobile) {
+          sctx.shadowColor = 'rgba(59, 130, 246, 0.7)';
+          sctx.shadowBlur = 16;
+        }
+        const pGrad = sctx.createLinearGradient(pad, pad, pad + PLAYER_SIZE, pad + PLAYER_SIZE);
+        pGrad.addColorStop(0, '#60a5fa');
+        pGrad.addColorStop(1, '#4f46e5');
+        sctx.fillStyle = pGrad;
+        roundRect(sctx, pad, pad, PLAYER_SIZE, PLAYER_SIZE, 8);
+        sctx.fill();
+        sctx.shadowBlur = 0;
+        sctx.fillStyle = '#22c55e';
+        sctx.beginPath();
+        sctx.arc(pad + PLAYER_SIZE - 6, pad + 6, 3, 0, Math.PI * 2);
+        sctx.fill();
+        cache.playerSprite = sc;
+      }
+      const pPad = (cache.playerSprite.width - PLAYER_SIZE) / 2;
+      ctx.drawImage(cache.playerSprite, playerX - pPad, playerTop - pPad);
 
-      // Obstacles ("downtime" blocks)
-      s.obstacles.forEach(ob => {
-        const obTop = groundY - ob.height;
-        ctx.save();
-        ctx.shadowColor = 'rgba(239, 68, 68, 0.6)';
-        ctx.shadowBlur = 12;
-        const oGrad = ctx.createLinearGradient(ob.x, obTop, ob.x, groundY);
+      // Obstacle sprite: all obstacles share the same size, so one cached sprite covers them all
+      if (!cache.obstacleSprite) {
+        const w = 34, h = 40;
+        const pad = isMobile ? 4 : 14;
+        const sc = document.createElement('canvas');
+        sc.width = w + pad * 2;
+        sc.height = h + pad * 2;
+        const sctx = sc.getContext('2d')!;
+        if (!isMobile) {
+          sctx.shadowColor = 'rgba(239, 68, 68, 0.6)';
+          sctx.shadowBlur = 12;
+        }
+        const oGrad = sctx.createLinearGradient(pad, pad, pad, pad + h);
         oGrad.addColorStop(0, '#f87171');
         oGrad.addColorStop(1, '#b91c1c');
-        ctx.fillStyle = oGrad;
-        roundRect(ctx, ob.x, obTop, ob.width, ob.height, 6);
-        ctx.fill();
-        ctx.restore();
-
+        sctx.fillStyle = oGrad;
+        roundRect(sctx, pad, pad, w, h, 6);
+        sctx.fill();
+        cache.obstacleSprite = sc;
+      }
+      const oPad = (cache.obstacleSprite.width - 34) / 2;
+      ctx.font = 'bold 10px monospace';
+      ctx.textAlign = 'center';
+      s.obstacles.forEach(ob => {
+        const obTop = groundY - ob.height;
+        ctx.drawImage(cache.obstacleSprite!, ob.x - oPad, obTop - oPad);
         ctx.fillStyle = 'rgba(255,255,255,0.9)';
-        ctx.font = 'bold 10px monospace';
-        ctx.textAlign = 'center';
         ctx.fillText(OBSTACLE_LABELS[ob.type], ob.x + ob.width / 2, obTop + ob.height / 2 + 4);
       });
 
@@ -240,7 +280,7 @@ export default function UptimeRunner({ onClose }: UptimeRunnerProps) {
 
     frameId = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(frameId);
-  }, [phase]);
+  }, [phase, isMobile]);
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
