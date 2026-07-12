@@ -29,6 +29,7 @@ export const milestones: CareerMilestone[] = [
     period: "Mar 2025 - Present",
     location: "Navi Mumbai, India",
     description: "Provide service enhancements for the high-availability Core Banking Solution (CBS) TCS BaNCS application at State Bank of India (SBI), ensuring client business continuity and system scaling.",
+    narrative: "When the modernization initiative started, I already knew exactly where the platform broke. That's the whole reason I could help move it: I'd spent four years watching it fail in every way it knew how. I migrated the AutoSys scheduler off HP-UX onto RHEL — thousands of batch jobs, zero tolerance for disruption — and I've been writing the automation that means nobody else has to do at 3 AM what I used to do at 3 AM.",
     achievements: [
       "Playing a key engineering role in the ongoing platform modernization initiative to upgrade the CBS application from legacy UNIX to modern Linux environments, ensuring seamless transition and operational continuity.",
       "Led migration of AutoSys enterprise job scheduler from version 12.1 (HP-UX) to version 24.0.1 (RHEL) as part of a major platform modernization initiative.",
@@ -56,6 +57,7 @@ export const milestones: CareerMilestone[] = [
     period: "Jan 2026 - Present",
     location: "Navi Mumbai, India",
     description: "Transitioning from enterprise production engineering to AI-powered software development through advanced coursework, practical projects, and modern machine learning technologies.",
+    narrative: "And now, on top of all that, I'm a student again. Part of it is a deliberate pivot — I want the next decade of my career to be built on something newer than what I started on. Part of it is just curiosity; the field is moving fast and I'd rather be in it than reading about it. But mostly it's that I can't stop looking at the systems I already work on and seeing what could be there instead. Four years of knowing exactly how a system works is a good place to start asking what it could become.",
     achievements: [
       "Enrolled in advanced AI and ML courses, gaining hands-on experience with neural networks, deep learning, and data analytics.",
     ],
@@ -79,6 +81,7 @@ export const milestones: CareerMilestone[] = [
     period: "Dec 2021 - Mar 2025",
     location: "Navi Mumbai, India",
     description: "Manage 24/7 technical shifts and cross-functional collaborations to ensure rapid incident response, high-priority defect analysis, and successful close-out operations for State Bank of India's Core Banking System.",
+    narrative: "Then the theory ran out. My first real job put me on India's largest bank's core banking system — a platform where “let me try something” isn't an option, because a batch job that dies at 3 AM means a salary doesn't land in someone's account by morning. Nothing in college prepares you for that weight. So I learned the way you actually learn: reading COBOL under pressure, tracing broken batches, working shifts through End-of-Year cycles where one mistake compounds across millions of accounts. Over four years I stopped being someone who knew about systems and became someone who knew this system — where it breaks, why it breaks, and what it costs when it does.",
     achievements: [
       "Led support team through the critical CBS End-of-Year operations phase, implementing process enhancements that boosted overall team productivity and client satisfaction.",
       "Managed support teams in shifts to deliver project support in complete alignment with client SLA expectations and customer stakeholders.",
@@ -105,6 +108,7 @@ export const milestones: CareerMilestone[] = [
     period: "Jun 2018 - May 2021",
     location: "Ratnagiri, India",
     description: "Completed undergraduate degree program in Information Technology with deep emphasis on software systems, database structures, and UNIX operating system environments.",
+    narrative: "Three years in Ratnagiri learning how the machine actually works — not the syntax, the why. Databases, Linux, C++, the logic underneath all of it. What stuck wasn't any one subject; it was realizing a computer does exactly what you tell it, no more and no less, and that every bug is really a gap between what you meant and what you wrote. I graduated with an 8.83, but the thing I was proudest of was a door that unlocked when it recognized my face — a Raspberry Pi, a camera, and OpenCV, taught to do something genuinely useful. That was the first time the theory turned into something real.",
     achievements: [
       "Graduated with a stellar academic distinction scoring 8.83 CGPI.",
       "Completed a specialized CDAC Diploma in Multilingual Computer Programming (Jan 2018).",

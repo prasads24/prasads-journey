@@ -450,8 +450,10 @@ export default function App() {
               </div>
 
               <div className="space-y-6">
-                {milestones.map((m, idx) => {
-                  const isCurrentPeak = idx === 0;
+                {/* Story Scroll reads chronologically (oldest first) so the narrative
+                    runs forward in time; Desktop OS mode keeps resume ordering. */}
+                {[...milestones].reverse().map((m) => {
+                  const isCurrentPeak = m.id === milestones[0].id;
                   return (
                     <div key={m.id} className="relative">
                       <SpatialGlassCard 
@@ -485,6 +487,12 @@ export default function App() {
 
                       {/* Achievements Detail column */}
                       <div className="md:col-span-8 space-y-4">
+                        {m.narrative && (
+                          <p className="text-sm sm:text-[15px] text-white/85 leading-relaxed font-light border-l-2 border-blue-500/40 pl-4">
+                            {m.narrative}
+                          </p>
+                        )}
+
                         <p className="text-xs text-white/70 leading-relaxed">
                           {m.description}
                         </p>

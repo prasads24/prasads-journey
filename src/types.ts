@@ -5,6 +5,8 @@ export interface CareerMilestone {
   period: string;
   location: string;
   description: string;
+  /** First-person story beat, shown only in Immersive Story Scroll mode. */
+  narrative?: string;
   achievements: string[];
   skills: string[];
   category: 'frontend' | 'backend' | 'architecture' | 'ai';
