@@ -450,9 +450,19 @@ export default function App() {
               </div>
 
               <div className="space-y-6">
-                {/* Story Scroll reads chronologically (oldest first) so the narrative
-                    runs forward in time; Desktop OS mode keeps resume ordering. */}
-                {[...milestones].reverse().map((m) => {
+                {/* Story Scroll reads chronologically (oldest first) so the narrative runs
+                    forward in time. Sort by the actual start date parsed from `period`
+                    rather than relying on the array order, which is not strictly ordered. */}
+                {[...milestones]
+                  .sort((a, b) => {
+                    const startOf = (m: typeof a) => {
+                      const start = m.period.split('-')[0].trim(); // e.g. "Mar 2025"
+                      const parsed = Date.parse(`1 ${start}`);
+                      return isNaN(parsed) ? 0 : parsed;
+                    };
+                    return startOf(a) - startOf(b);
+                  })
+                  .map((m) => {
                   const isCurrentPeak = m.id === milestones[0].id;
                   return (
                     <div key={m.id} className="relative">
