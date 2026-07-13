@@ -108,7 +108,7 @@ export const milestones: CareerMilestone[] = [
     period: "Jun 2018 - May 2021",
     location: "Ratnagiri, India",
     description: "Completed undergraduate degree program in Information Technology with deep emphasis on software systems, database structures, and Linux operating system environments.",
-    narrative: "Three years in Ratnagiri learning how the machine actually works — not the syntax, the why. Databases, Linux, C++, the logic underneath all of it. What stuck wasn't any one subject; it was realizing a computer does exactly what you tell it, no more and no less, and that every bug is really a gap between what you meant and what you wrote. I graduated with an 8.83, but the thing I was proudest of was a door that unlocked when it recognized my face — a Raspberry Pi, a camera, and OpenCV, taught to do something genuinely useful. That was the first time the theory turned into something real.",
+    narrative: "Three years in Ratnagiri learning how the machine actually works — not the syntax, but the reason behind it. Databases, Linux, C++, the logic underneath all of it. What stuck wasn't any one subject; it was realizing a computer does exactly what you tell it, no more and no less, and that every bug is really a gap between what you meant and what you wrote. I graduated with an 8.83, but the thing I was proudest of was a door that unlocked when it recognized my face — a Raspberry Pi, a camera, and OpenCV, taught to do something genuinely useful. That was the first time the theory turned into something real.",
     achievements: [
       "Graduated with a stellar academic distinction scoring 8.83 CGPI.",
       "Completed a specialized CDAC Diploma in Multilingual Computer Programming (Jan 2018).",
