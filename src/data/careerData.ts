@@ -29,7 +29,7 @@ export const milestones: CareerMilestone[] = [
     period: "Mar 2025 - Present",
     location: "Navi Mumbai, India",
     description: "Provide service enhancements for the high-availability Core Banking Solution (CBS) TCS BaNCS application at State Bank of India (SBI), ensuring client business continuity and system scaling.",
-    narrative: "When the modernization initiative started, I already knew exactly where the platform broke. That's the whole reason I could help move it: I'd spent four years watching it fail in every way it knew how. I migrated the AutoSys scheduler off HP-UX onto RHEL — thousands of batch jobs, zero tolerance for disruption — and I've been writing the automation that means nobody else has to do at 3 AM what I used to do at 3 AM.",
+    narrative: "When the modernization initiative started, I volunteered — four years of learning what this platform costs when it fails made me want a hand in making sure it stopped failing. I migrated the AutoSys scheduler off HP-UX onto RHEL: thousands of batch jobs, zero tolerance for disruption. Now the goal is simple: make sure nobody has to learn this system the hard way, at 3 AM, like I did.",
     achievements: [
       "Playing a key engineering role in the ongoing platform modernization initiative to upgrade the CBS application from legacy UNIX to modern Linux environments, ensuring seamless transition and operational continuity.",
       "Led migration of AutoSys enterprise job scheduler from version 12.1 (HP-UX) to version 24.0.1 (RHEL) as part of a major platform modernization initiative.",
@@ -57,7 +57,7 @@ export const milestones: CareerMilestone[] = [
     period: "Jan 2026 - Present",
     location: "Navi Mumbai, India",
     description: "Transitioning from enterprise production engineering to AI-powered software development through advanced coursework, practical projects, and modern machine learning technologies.",
-    narrative: "And now, on top of all that, I'm a student again. Part of it is a deliberate pivot — I want the next decade of my career to be built on something newer than what I started on. Part of it is just curiosity; the field is moving fast and I'd rather be in it than reading about it. But mostly it's that I can't stop looking at the systems I already work on and seeing what could be there instead. Four years of knowing exactly how a system works is a good place to start asking what it could become.",
+    narrative: "I signed up for a master's while still working full-time, which says something about how sure I am about this. The pivot's deliberate — I want the next decade built on something newer than where I started — but it's not just career math. I've spent four years watching this platform automate away the boring, repetitive parts of the job, and I keep wondering what happens if you point that same idea at everything else. Four years of knowing exactly how a system works is a good place to start asking what it could become.",
     achievements: [
       "Enrolled in advanced AI and ML courses, gaining hands-on experience with neural networks, deep learning, and data analytics.",
     ],
