@@ -68,7 +68,7 @@ export const milestones: CareerMilestone[] = [
       language: "Python, C++",
       runtime: "TensorFlow, PyTorch",
       architecture: "Artificial Intelligence and Machine Learning Systems",
-      database: "Oracle Database",
+      database: "Supabase",
       devops: "Cloud Platforms (VMware)"
     },
     projectTitle: '',
