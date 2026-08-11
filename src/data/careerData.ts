@@ -32,7 +32,7 @@ export const milestones: CareerMilestone[] = [
     narrative: "When the modernization initiative started, I volunteered — four years of learning what this platform costs when it fails made me want a hand in making sure it stopped failing. I migrated the AutoSys scheduler off HP-UX onto RHEL: thousands of batch jobs, zero tolerance for disruption. Now the goal is simple: make sure nobody has to learn this system the hard way, at 3 AM, like I did.",
     achievements: [
       "Playing a key engineering role in the ongoing platform modernization initiative to upgrade the CBS application from legacy UNIX to modern Linux environments, ensuring seamless transition and operational continuity.",
-      "Led migration of AutoSys enterprise job scheduler from version 12.1 (HP-UX) to version 24.0.1 (RHEL) as part of a major platform modernization initiative.",
+      "Led migration of AutoSys enterprise job scheduler from Legacy Unix to modern Linux environments as part of a major platform modernization initiative.",
       "Designed and executed Disaster Recovery (DR) failover procedures for the CBS platform, reducing recovery execution through process optimization.",
       "Developed Shell automation scripts integrated with AutoSys to eliminate repetitive operational tasks, reducing manual workload and human error in batch operations while improving execution consistency.",
       "Contributed to the addition of CBS application servers and database nodes to improve system capacity, assisting in configuration and validation with minimal downtime.",
